@@ -16,7 +16,8 @@
     "build": "babel src --out-dir .",
     "test": "jest",
     "lint": "eslint src",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "chalk": "^2.4.1",
