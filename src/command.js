@@ -44,18 +44,15 @@ export function matchImageSnapshotCommand(defaultOptions) {
         }) => {
           if (!pass && !added && !updated) {
             const message = diffSize
-              ? `Image size (${imageDimensions.baselineWidth}x${
-                  imageDimensions.baselineHeight
-                }) different than saved snapshot size (${
-                  imageDimensions.receivedWidth
-                }x${
-                  imageDimensions.receivedHeight
-                }).\nSee diff for details: ${diffOutputPath}`
+              ? `Image size (${imageDimensions.baselineWidth}x${imageDimensions.baselineHeight
+              }) different than saved snapshot size (${imageDimensions.receivedWidth
+              }x${imageDimensions.receivedHeight
+              }).\nSee diff for details: ${diffOutputPath}`
               : `Image was ${diffRatio *
-                  100}% different from saved snapshot with ${diffPixelCount} different pixels.\nSee diff for details: ${diffOutputPath}`;
+              100}% different from saved snapshot with ${diffPixelCount} different pixels.\nSee diff for details: ${diffOutputPath}`;
 
             if (failOnSnapshotDiff) {
-              throw new Error(message);
+              expect(message).to.not.exist
             } else {
               Cypress.log({ message });
             }
